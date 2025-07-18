@@ -1,0 +1,30 @@
+{{ define "title" }}Home{{ end }}
+
+{{ template "layout.html.tmpl" . }}
+
+{{ define "content" }}
+  <h1>HTMX + Alpine.js + Go SSR</h1>
+
+  <div
+    x-data="{
+      count: 0,
+      getParams() { return { count: this.count }},
+      increment() { this.count++ }
+
+    }"
+    @count-updated.window="count = $event.detail"
+  >
+    <button
+      @click="increment"
+      hx-get="/counter"
+      :hx-vals="JSON.stringify({ count })"
+      :hx-push-url="'/counter?count=' + count"
+      hx-target="#counter"
+      hx-swap="outerHTML"
+    >
+      +
+    </button>
+
+    <div id="counter" x-text="count"></div>
+  </div>
+{{ end }}
