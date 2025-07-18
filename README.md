@@ -7,3 +7,14 @@
 - [ ] Gorm
 - [ ] Postgres
 - [ ] Tailwind CSS
+
+### Get Started
+```bash
+go mod tidy
+
+go mod download
+
+go install  github.com/cosmtrek/air@latest
+
+air
+```
