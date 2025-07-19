@@ -27,7 +27,7 @@ func main() {
 	http.ListenAndServe(":8888", r)
 }
 
-// handlerはinternal/handlersへ
+// TODO: handlerはinternal/handlersへ
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello, World!"))
 }
